@@ -1,104 +1,69 @@
 import threading
 from threading import Thread
 import datetime
-from selenium import webdriver
+import requests
+from bs4 import BeautifulSoup
+from scraperjs import scrapeSingleSet, scrapeSequentialSets
 
 
-def scrape(url):
-    driver = webdriver.Chrome( "C:\chromedriver.exe" )
-    driver.get( url )
+class threadone(threading.Thread):
+    def __init__(self, url,dataset_id,tagList,methodType):
+        threading.Thread.__init__(self)
+        self.url = url
+        self.dataset_id
+        self.tagList = tagList
+        self.methodType = methodType
 
-def func1(array):
-    print array
-    for url in array:
-        scrape( url )
-    print " thread one started "
+    def run(self):
+        single = scrapeSingleSet()
+        sequen = scrapeSequentialSets()
 
-def func2(array):
-    print array
-    for url in array:
-        scrape( url )
-    print " thread two started "
-
-def func3(array):
-    print array
-    for url in array:
-        scrape( url )
-    print " thread three started "
-
-def func4(array):
-    print array
-    for url in array:
-        scrape( url )
-    print " thread four started "
-
-def func5(array):
-    print array
-    for url in array:
-        scrape( url )
-    print " thread five started "
+        if(self.methodType == 1):
+            single.bytagid(self.url, self.tagList)
+        elif(self.methodType == 2):
+            single.bycommontagid(self.url, self.tagList)
+        elif (self.methodType == 3):
+            sequen.splitLines(self.url, self.dataset_id, self.tagList)
+        elif (self.methodType == 4):
+            sequen.bycommontagid(self.url, self.dataset_id, self.tagList)
+        else:
+            print "wrong method type given"
 
 
 
+class createthreads:
 
-def chunkIt(seq, num):
-    avg = len(seq) / float(num)
-    out = []
-    last = 0.0
-
-    while last < len(seq):
-        out.append(seq[int(last):int(last + avg)])
-        last += avg
-
-    return out
-
-
-def sendToThreads():
-    array = ['https://github.com/jeanphix/Ghost.py/issues/290',
-             'https://docs.python.org/2/library/functions.html#isinstance',
-             'http://www.instructables.com/id/View-any-Web-Content-as-Virtual-Reality/',
-             'https://jsonformatter.curiousconcept.com/', 'https://github.com/jeanphix/Ghost.py/issues/290',
-             'https://docs.python.org/2/library/functions.html#isinstance',
-             'http://www.instructables.com/id/View-any-Web-Content-as-Virtual-Reality/',
-             'https://jsonformatter.curiousconcept.com/', 'https://github.com/jeanphix/Ghost.py/issues/290',
-             'https://docs.python.org/2/library/functions.html#isinstance',
-             'http://www.instructables.com/id/View-any-Web-Content-as-Virtual-Reality/',
-             'https://jsonformatter.curiousconcept.com/', 'https://github.com/jeanphix/Ghost.py/issues/290',
-             'https://docs.python.org/2/library/functions.html#isinstance',
-             'http://www.instructables.com/id/View-any-Web-Content-as-Virtual-Reality/',
-             'https://jsonformatter.curiousconcept.com/', 'https://github.com/jeanphix/Ghost.py/issues/290',
-             'https://docs.python.org/2/library/functions.html#isinstance',
-             'http://www.instructables.com/id/View-any-Web-Content-as-Virtual-Reality/',
-             'https://jsonformatter.curiousconcept.com/']
-
-    a = chunkIt( array, 5 )
-
-    start = datetime.datetime.now()
-    Thread(target = func1(a[0])).start()
-    Thread(target = func2(a[1])).start()
-    Thread( target=func3(a[2]) ).start()
-    Thread( target=func4(a[3]) ).start()
-    Thread( target=func5(a[4]) ).start()
-    end = datetime.datetime.now()
-
-
-if __name__ == '__main__':
-    sendToThreads()
+    def func1(array,dataset_id,tagList,methodType):
+        for url in array:
+            thread = threadone(url,dataset_id, tagList,methodType)
+            thread.start()
+        print " thread one started "
 
 
 
+class arraybreaker:
+
+    def chunkIt(seq, num):
+        avg = len(seq) / float(num)
+        out = []
+        last = 0.0
+
+        while last < len(seq):
+            out.append(seq[int(last):int(last + avg)])
+            last += avg
+        return out
 
 
+    def sendToThreads(array,dataset_id,tagList,methodType):
+
+        chunkTerm = 5
+        arrb = arraybreaker()
+        crt = createthreads()
+        chunckedurls = arrb.chunkIt( array, chunkTerm )
 
 
-
-
-
-
-
-
-
-
-
-
+        for incrment_time in range(chunkTerm):
+            start = datetime.datetime.now()
+            Thread(target = crt.func1(chunckedurls[incrment_time],dataset_id,tagList,methodType)).start()
+            end = datetime.datetime.now()
 

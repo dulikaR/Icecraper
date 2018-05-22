@@ -1,6 +1,5 @@
 from time import sleep
 from selenium import webdriver
-from distributornonjs import sendToThreads
 
 
 class pagination:
@@ -56,9 +55,3 @@ class pagination:
 
         print "items urls grabbing ended for the site "
         return itemListUrl
-
-
-    def startScraping(urlArray, tagList):
-        print "scraping started for the site "
-        sendToThreads(urlArray, tagList)
-        print "scraping ended for the site "

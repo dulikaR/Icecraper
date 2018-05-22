@@ -4,11 +4,9 @@ import unicodedata
 from selenium import webdriver
 
 
-
-
 class scrapeSingleSet:
 
-    def bytagid(self):
+    def bytagid(self,url,tag_list):
         by_tag_id_list = []
 
         return by_tag_id_list
@@ -19,14 +17,13 @@ class scrapeSingleSet:
         driver = webdriver.Chrome("C:\chromedriver4.exe")
         driver.get(url)
 
-        resultList = []
+        result_sub_list = []
 
-        for ts in tag_list:
-            reult_sub_list = []
-            list_attribute = driver.find_element_by_xpath("//" + ts.tag + "[@" + ts.tag_id + "=" + ts.tag_variable + "]")
-            reult_sub_list.append(ts.name, list_attribute)
+        for tl in tag_list:
+            list_attribute = driver.find_elements_by_xpath(tl[1])
+            result_sub_list.append(tl[0], list_attribute)
 
-            by_common_tag_id_list.append(reult_sub_list)
+            by_common_tag_id_list.append(result_sub_list)
 
         return by_common_tag_id_list
 
@@ -62,29 +59,35 @@ class scrapeSequentialSets:
 
         return split_line_list
 
+    def bycommontagid(self, url, tag_list, common_tag):
+        by_common_tag_id_list = []
 
-    def bytagid(self,url,tag_list):  # gather data by data sets & get requiered variables by tag ids
-
-        by_tag_id_list = []
         driver = webdriver.Chrome("C:\chromedriver4.exe")
         driver.get(url)
 
+        common_tag_object_list = driver.find_elements_by_xpath(common_tag)
+
         resultList = []
 
-        for ts in tag_list:
-            reult_sub_list = []
-            list_attribute =  driver.find_element_by_xpath( "//"+ts.tag+"[@"+ts.tag_id+"="+ts.tag_variable+"]")
-            reult_sub_list.append(ts.name , list_attribute)
+        for ctol in common_tag_object_list:
 
-            by_tag_id_list.append(reult_sub_list)
+            result_sub_list = []
 
-        return by_tag_id_list
+            for tl in tag_list:
+                list_attribute = ctol.find_elements_by_xpath(tl[1])
+                result_sub_list.append(tl[0], list_attribute)
 
-class Taglist:
+                by_common_tag_id_list.append(result_sub_list)
 
-    def __init__(self, name, tag, tag_id, tag_variable):
-        self.name = name
-        self.tag = tag
-        self.tag_id = tag_id
-        self.tag_variable = tag_variable
+        return by_common_tag_id_list
+
+
+
+# class Taglist:
+#
+#     def __init__(self, name, tag, tag_id, tag_variable):
+#         self.name = name
+#         self.tag = tag
+#         self.tag_id = tag_id
+#         self.tag_variable = tag_variable
 
