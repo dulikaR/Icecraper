@@ -8,14 +8,14 @@ class Agent:
         print ""
 
     def get_product_in_pages(self,page_list, tag_id):
-        p = pagination
+        p = pagination()
         product_list = p.getItemPages(page_list, tag_id)
         return product_list
 
 
-    def start_paging(self,page_links,tag_id):
-        p = pagination
-        page_list = p.startPaging(page_links, tag_id)
+    def start_paging(self,page_link,tag_id):
+        p = pagination()
+        page_list = p.startPaging(page_link, tag_id)
         return page_list
 
 

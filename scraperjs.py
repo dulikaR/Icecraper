@@ -37,7 +37,6 @@ class scrapeSequentialSets:
         driver.get(url)
 
         DataSet = driver.find_elements_by_xpath(data_set_id) #"//div[@class='review review-index__review']"
-        i=0
         full_data_set = []
 
         for rs in DataSet:
@@ -46,17 +45,12 @@ class scrapeSequentialSets:
             data = str(unicodedata.normalize('NFKD', data1).encode('ascii', 'ignore')).splitlines()
             data_set_part = []
 
-            i+=1
-            k=0
-
-            for dl in data_list:
-                k+=1
-                data_set_part.append(data[k])
+            for dl in data:
+                data_set_part.append(dl)
 
             full_data_set.append(data_set_part)
 
         split_line_list.append(full_data_set)
-
         return split_line_list
 
     def bycommontagid(self, url, tag_list, common_tag):

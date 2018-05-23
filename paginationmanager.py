@@ -4,7 +4,7 @@ from selenium import webdriver
 
 class pagination:
 
-    def startPaging(url, xpath):
+    def startPaging(self, url, xpath):
         headerUrls = []
 
         driver = webdriver.Chrome("C:\chromedriver4.exe")
@@ -26,7 +26,7 @@ class pagination:
         return headerUrls
 
 
-    def getItemPages(pageUrls, xpath):
+    def getItemPages(self, pageUrls, xpath):
 
         itemListUrl = []
         i = 0

@@ -9,10 +9,10 @@ from scraperjs import scrapeSingleSet, scrapeSequentialSets
 
 
 class threadone(threading.Thread):
-    def __init__(self, url,dataset_id,tagList,methodType):
+    def __init__(self, url, dataset_id, tagList, methodType):
         threading.Thread.__init__(self)
         self.url = url
-        self.dataset_id
+        self.dataset_id = dataset_id
         self.tagList = tagList
         self.methodType = methodType
 
@@ -20,9 +20,9 @@ class threadone(threading.Thread):
         single = scrapeSingleSet()
         sequen = scrapeSequentialSets()
 
-        if(self.methodType == 1):
+        if (self.methodType == 1):
             single.bytagid(self.url, self.tagList)
-        elif(self.methodType == 2):
+        elif (self.methodType == 2):
             single.bycommontagid(self.url, self.tagList)
         elif (self.methodType == 3):
             sequen.splitLines(self.url, self.dataset_id, self.tagList)
@@ -32,20 +32,16 @@ class threadone(threading.Thread):
             print "wrong method type given"
 
 
-
 class createthreads:
-
-    def func1(array,dataset_id,tagList,methodType):
+    def func1(self, array, dataset_id, tagList, methodType):
         for url in array:
-            thread = threadone(url,dataset_id, tagList,methodType)
+            thread = threadone(url, dataset_id, tagList, methodType)
             thread.start()
         print " thread one started "
 
 
-
 class arraybreaker:
-
-    def chunkIt(seq, num):
+    def chunkIt(self, seq, num):
         avg = len(seq) / float(num)
         out = []
         last = 0.0
@@ -55,18 +51,15 @@ class arraybreaker:
             last += avg
         return out
 
-
-    def sendToThreads(array,dataset_id,tagList,methodType):
+    def sendToThreads(self, array, dataset_id, tagList, methodType):
 
         mp = machinePerformance()
-        chunkTerm =  mp.promptmachine(array[0]) #sending url to monitor & do the calculation to decide thread count
+        chunkTerm = mp.promptmachine(array[1])  # sending url to monitor & do the calculation to decide thread count
         arrb = arraybreaker()
         crt = createthreads()
-        chunckedurls = arrb.chunkIt( array, chunkTerm )
-
+        chunckedurls = arrb.chunkIt(array, chunkTerm)
 
         for incrment_time in range(chunkTerm):
             start = datetime.datetime.now()
-            Thread(target = crt.func1(chunckedurls[incrment_time],dataset_id,tagList,methodType)).start()
+            Thread(target=crt.func1(chunckedurls[incrment_time], dataset_id, tagList, methodType)).start()
             end = datetime.datetime.now()
-
