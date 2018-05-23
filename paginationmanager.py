@@ -21,6 +21,8 @@ class pagination:
                 # print driver.current_url
             except:
                 stop = True
+
+        driver.quit()
         return headerUrls
 
 
@@ -44,5 +46,4 @@ class pagination:
             driver.quit()
 
         i += 1
-
         return itemListUrl
