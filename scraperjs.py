@@ -82,12 +82,3 @@ class scrapeSequentialSets:
         return by_common_tag_id_list
 
 
-
-# class Taglist:
-#
-#     def __init__(self, name, tag, tag_id, tag_variable):
-#         self.name = name
-#         self.tag = tag
-#         self.tag_id = tag_id
-#         self.tag_variable = tag_variable
-

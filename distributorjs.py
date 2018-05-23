@@ -3,6 +3,8 @@ from threading import Thread
 import datetime
 import requests
 from bs4 import BeautifulSoup
+
+from monitarizingmanager import machinePerformance
 from scraperjs import scrapeSingleSet, scrapeSequentialSets
 
 
@@ -56,7 +58,8 @@ class arraybreaker:
 
     def sendToThreads(array,dataset_id,tagList,methodType):
 
-        chunkTerm = 5
+        mp = machinePerformance()
+        chunkTerm =  mp.promptmachine(array[0]) #sending url to monitor & do the calculation to decide thread count
         arrb = arraybreaker()
         crt = createthreads()
         chunckedurls = arrb.chunkIt( array, chunkTerm )
