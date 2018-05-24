@@ -4,6 +4,8 @@ import requests
 from bs4 import BeautifulSoup
 import unicodedata
 from selenium import webdriver
+from databasemanager import database
+
 
 
 class scrapeSingleSet:
@@ -51,15 +53,16 @@ class scrapeSequentialSets:
                 for dl in data:
                     data_set_part.append(dl)
 
+                data_set_part = filter(None, data_set_part)
                 full_data_set.append(data_set_part)
 
             split_line_list.append(full_data_set)
 
-            print split_line_list
+            # print split_line_list
+            db = database()
+            db.sql(split_line_list)
+            sleep(2)
 
-            sleep(7)
-
-        return split_line_list
 
     def bycommontagid(self, urls, tag_list, common_tag,driver):
         for url in urls:

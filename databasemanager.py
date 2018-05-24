@@ -1,6 +1,7 @@
 class database:
 
-    def sql(self):
+    def sql(self,final_data_set):
+        print final_data_set
         print ""
 
 

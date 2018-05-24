@@ -26,8 +26,8 @@ if __name__ == '__main__':
 
     a = agent.start_paging(url, "#pagnNextLink")
     b = agent.get_product_in_pages(a,".a-size-small.a-text-normal")
-    k = agent.scrape_sequential_sests_with_split_lines(b,"//div[@class='a-section review']",[(a),(b)])
-    print k
+    agent.scrape_sequential_sests_with_split_lines(b,"//div[@class='a-section review']",[(a),(b)])
+    print "finish"
 
 
 
