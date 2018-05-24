@@ -31,12 +31,12 @@ class Agent:
         ab.sendToThreads(array, dataset_id, tagList, 2)
         print ""
 
-    def scrape_sequential_sests_with_common_tag_id(self,array,dataset_id,tagList):
+    def scrape_sequential_sests_with_split_lines(self,array,dataset_id,tagList):
         ab = arraybreaker()
         ab.sendToThreads(array, dataset_id, tagList, 3)
         print ""
 
-    def scrape_sequential_sests_with_split_lines(self,array,dataset_id,tagList):
+    def scrape_sequential_sests_with_common_tag_id(self,array,dataset_id,tagList):
         ab = arraybreaker()
         ab.sendToThreads(array, dataset_id, tagList, 4)
         print ""

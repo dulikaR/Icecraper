@@ -25,3 +25,56 @@
 [0523/155046.248:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
 [0523/155046.183:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
 [0523/155046.283:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190640.166:ERROR:process_info.cc(359)] UncheckedAllocate
+[0523/190640.318:ERROR:process_info.cc(359)] UncheckedAllocate
+[0523/190640.480:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190640.481:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190640.480:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190640.483:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190640.484:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190640.484:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190640.484:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190640.485:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190640.194:ERROR:process_info.cc(359)] UncheckedAllocate
+[0523/190640.586:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190640.586:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190640.923:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190640.923:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190640.925:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190641.245:ERROR:file_io.cc(134)] WriteFile: Error (0x13D) while retrieving error. (0x70)
+[0523/190641.389:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190641.223:ERROR:file_io.cc(134)] WriteFile: Error (0x13D) while retrieving error. (0x70)
+[0523/190641.399:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190641.665:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190641.894:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190642.029:ERROR:process_info.cc(359)] UncheckedAllocate
+[0523/190642.123:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190642.186:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190642.199:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190642.202:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190644.589:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190644.589:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190646.590:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190646.718:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190704.677:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190704.678:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/190706.688:ERROR:file_io.cc(134)] WriteFile: There is not enough space on the disk. (0x70)
+[0523/190706.688:ERROR:crash_report_exception_handler.cc(116)] WriteEverything failed
+[0523/191852.184:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Users\DulikaR\AppData\Local\Temp\scoped_dir15448_8384\Crashpad: There is not enough space on the disk. (0x70)
+[0523/191852.757:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0523/191853.360:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Users\DulikaR\AppData\Local\Temp\scoped_dir8852_1757\Crashpad: There is not enough space on the disk. (0x70)
+[0523/191853.360:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Users\DulikaR\AppData\Local\Temp\scoped_dir15448_8384\Crashpad: There is not enough space on the disk. (0x70)
+[0523/191853.379:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Users\DulikaR\AppData\Local\Temp\scoped_dir9980_25163\Crashpad: There is not enough space on the disk. (0x70)
+[0523/191853.475:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Users\DulikaR\AppData\Local\Temp\scoped_dir25104_2039\Crashpad: There is not enough space on the disk. (0x70)
+[0523/191853.542:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0523/191853.546:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Users\DulikaR\AppData\Local\Temp\scoped_dir8852_1757\Crashpad: There is not enough space on the disk. (0x70)
+[0523/191853.662:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0523/191853.798:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: The pipe has been ended. (0x6D)
+[0523/191853.802:ERROR:crash_report_database_win.cc(568)] CreateDirectory C:\Users\DulikaR\AppData\Local\Temp\scoped_dir25104_2039\Crashpad: There is not enough space on the disk. (0x70)
+[0523/191900.964:ERROR:crashpad_client_win.cc(130)] crash server failed to launch, self-terminating
+[0523/191901.172:ERROR:crashpad_client_win.cc(130)] crash server failed to launch, self-terminating
+[0523/191901.808:ERROR:crashpad_client_win.cc(130)] crash server failed to launch, self-terminating
+[0523/191902.532:ERROR:process_info.cc(359)] UncheckedAllocate
+[0523/191902.556:ERROR:process_info.cc(359)] UncheckedAllocate
+[0523/191903.056:ERROR:scoped_process_suspend.cc(31)] NtSuspendProcess: An attempt was made to access an exiting process. (0xc000010a)
+[0523/191903.120:ERROR:process_info.cc(545)] ReadProcessData failed

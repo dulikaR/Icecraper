@@ -3,6 +3,7 @@ from threading import Thread
 import datetime
 import requests
 from bs4 import BeautifulSoup
+from selenium import webdriver
 
 from monitarizingmanager import machinePerformance
 from scraperjs import scrapeSingleSet, scrapeSequentialSets
@@ -20,24 +21,25 @@ class threadone(threading.Thread):
         single = scrapeSingleSet()
         sequen = scrapeSequentialSets()
 
+        driver = webdriver.Chrome("C:\chromedriver4.exe")
+
         if (self.methodType == 1):
-            single.bytagid(self.url, self.tagList)
+            single.bytagid(self.url, self.tagList,driver)
         elif (self.methodType == 2):
-            single.bycommontagid(self.url, self.tagList)
+            single.bycommontagid(self.url, self.tagList,driver)
         elif (self.methodType == 3):
-            sequen.splitLines(self.url, self.dataset_id, self.tagList)
+            sequen.splitLines(self.url, self.dataset_id, self.tagList,driver)
         elif (self.methodType == 4):
-            sequen.bycommontagid(self.url, self.dataset_id, self.tagList)
+            sequen.bycommontagid(self.url, self.dataset_id, self.tagList,driver)
         else:
             print "wrong method type given"
 
 
 class createthreads:
     def func1(self, array, dataset_id, tagList, methodType):
-        for url in array:
-            thread = threadone(url, dataset_id, tagList, methodType)
-            thread.start()
-        print " thread one started "
+        thread = threadone(array, dataset_id, tagList, methodType)
+        thread.start()
+        print "new thread started "
 
 
 class arraybreaker:
@@ -54,12 +56,19 @@ class arraybreaker:
     def sendToThreads(self, array, dataset_id, tagList, methodType):
 
         mp = machinePerformance()
-        chunkTerm = mp.promptmachine(array[1])  # sending url to monitor & do the calculation to decide thread count
+        first_value = next((el for el in array if el is not None), None) #to get the firt not null value in this 'array' list
+        chunkTerm = mp.promptmachine(first_value)  # sending url to monitor & do the calculation to decide thread count
         arrb = arraybreaker()
         crt = createthreads()
         chunckedurls = arrb.chunkIt(array, chunkTerm)
 
-        for incrment_time in range(chunkTerm):
-            start = datetime.datetime.now()
-            Thread(target=crt.func1(chunckedurls[incrment_time], dataset_id, tagList, methodType)).start()
-            end = datetime.datetime.now()
+        if(chunkTerm == 0 or chunkTerm >9):
+            for incrment_time in range(4):
+                start = datetime.datetime.now()
+                Thread(target=crt.func1(chunckedurls[incrment_time], dataset_id, tagList, methodType)).start()
+                end = datetime.datetime.now()
+        else:
+            for incrment_time in range(chunkTerm):
+                start = datetime.datetime.now()
+                Thread(target=crt.func1(chunckedurls[incrment_time], dataset_id, tagList, methodType)).start()
+                end = datetime.datetime.now()

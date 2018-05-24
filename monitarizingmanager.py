@@ -1,3 +1,5 @@
+from time import clock
+
 import psutil
 from selenium import webdriver
 
@@ -20,7 +22,9 @@ class machinePerformance():
         free_memory = memory_status[4]
 
         util = utils()
+        start = clock()
         process = psutil.Process(util.selenium_test_run(url)) #run selenium to test the consumptions
+        one_page_time = (clock()-start)
         a = process.memory_info().rss
         l = process.io_counters()[2]
 

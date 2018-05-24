@@ -30,10 +30,11 @@ class pagination:
 
         itemListUrl = []
         i = 0
+        driver = webdriver.Chrome("C:\chromedriver4.exe")
         for page in pageUrls:
 
             try:
-                driver = webdriver.Chrome("C:\chromedriver4.exe")
+
                 driver.get(page)
                 itemList = driver.find_elements_by_css_selector(xpath)  # .get_attribute( 'href' )
 
