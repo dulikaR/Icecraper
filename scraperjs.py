@@ -23,16 +23,19 @@ class scrapeSingleSet:
         element_three = 'NULL'
         element_four = 'NULL'
 
-        element_one = name.text
-        element_three = price.text
-        element_four = details.text
+        element_one = str(unicodedata.normalize('NFKD', (name.text)).encode('ascii', 'ignore'))
+        element_three = str(unicodedata.normalize('NFKD', (price.text)).encode('ascii', 'ignore'))
+        element_four = str(unicodedata.normalize('NFKD', (details.text)).encode('ascii', 'ignore'))
+
+
 
         finalResult.append(element_one)
         finalResult.append(element_three)
         finalResult.append(element_four)
 
-        db = database()
-        db.json(finalResult)
+        # db = database()
+        # db.json(finalResult)
+        return finalResult
 
 
     def bycommontagid(self,url,tag_list,driver):

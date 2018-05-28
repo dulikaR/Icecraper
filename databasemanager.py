@@ -21,7 +21,6 @@ class database:
 
         with open('data.txt', 'w') as outfile:
             json.dump(final_data_set, outfile)
-            outfile.close
 
         print datetime.datetime.now()
 

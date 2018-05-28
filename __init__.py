@@ -36,6 +36,6 @@ if __name__ == '__main__':
     agent.scrape_single_sests_with_tag_id(b,[])
     xx = agent.get_json_obj()
     print "finish"
-
+    print xx
 
 
