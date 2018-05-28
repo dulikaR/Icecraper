@@ -31,8 +31,14 @@ if __name__ == '__main__':
     agent = Agent()
 
 
-    a = agent.start_paging(url,".pag-next span")
-    b = agent.get_items_in_pages(a,".item-title")
+    # a = agent.start_paging(url,".pag-next span")
+    # b = agent.get_items_in_pages(a,".item-title")
+    # agent.scrape_single_sests_with_tag_id(b,[])
+    # xx = agent.get_json_obj()
+    # print "finish"
+    # print xx
+
+    b = agent.start_paging_and_get_all_items(url,".pag-next span",".item-title")
     agent.scrape_single_sests_with_tag_id(b,[])
     xx = agent.get_json_obj()
     print "finish"

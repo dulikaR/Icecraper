@@ -50,25 +50,23 @@ class pagination:
         return itemListUrl
 
 
-    def getItemPagesTwoForALLProducts(self,driver, pageUrls, xpath):
+    def getItemPagesTwoForALLProducts(self,driver, page, xpath):
 
         itemListUrl = []
         i = 0
-        for page in pageUrls:
+        try:
+            driver.get(page)
+            itemList = driver.find_elements_by_css_selector(xpath)  # .get_attribute( 'href' )
 
-            try:
-                driver.get(page)
-                itemList = driver.find_elements_by_css_selector(xpath)  # .get_attribute( 'href' )
-
-                for item in itemList:
-                    itemUrl = item.get_attribute('href')
-                    # print itemUrl
-                    itemListUrl.append(itemUrl)
-            except:
-                print "error in item urls scraping"
-            driver.quit()
+            for item in itemList:
+                itemUrl = item.get_attribute('href')
+                # print itemUrl
+                itemListUrl.append(itemUrl)
+        except:
+            print "error in item urls scraping"
 
         i += 1
+        a = itemListUrl
         return itemListUrl
 
 
@@ -78,13 +76,16 @@ class pagination:
         driver = webdriver.Chrome("C:\chromedriver4.exe")
         driver.get(url)
         stop = False
+        newUrl = ''
+        i=0
 
         while stop == False:
             try:
-                newUrl = driver.find_element_by_css_selector(xpath).get_attribute('href')
-                sleep(2)
-                itemList = self.getItemPagesTwoForALLProducts(driver,newUrl, productXpath)
+                newUrl = driver.current_url
+                itemList = self.getItemPagesTwoForALLProducts(driver, newUrl, productXpath)
                 allItems.append(itemList)
+                driver.find_element_by_css_selector(xpath).click()  # .get_attribute('href')
+                sleep(2)
             except:
                 stop = True
 

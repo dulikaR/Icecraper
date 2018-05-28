@@ -19,15 +19,9 @@ class scrapeSingleSet:
         price = soup.find('div', attrs={'class': 'ui-price-tag'})
         details = soup.find('div', attrs={'class': 'item-description'})
 
-        element_one = 'NULL'
-        element_three = 'NULL'
-        element_four = 'NULL'
-
         element_one = str(unicodedata.normalize('NFKD', (name.text)).encode('ascii', 'ignore'))
         element_three = str(unicodedata.normalize('NFKD', (price.text)).encode('ascii', 'ignore'))
         element_four = str(unicodedata.normalize('NFKD', (details.text)).encode('ascii', 'ignore'))
-
-
 
         finalResult.append(element_one)
         finalResult.append(element_three)

@@ -22,7 +22,7 @@ class Agent:
 
     def start_paging_and_get_all_items(self,page_link,tag_id,item_id):
         p = pagination()
-        all_items = p.getItemPagesTwoForALLProducts(page_link, tag_id,item_id)
+        all_items = p.pageingAndProducts(page_link, tag_id,item_id)
         all_items_flat_list = [item for sublist in all_items for item in sublist]
         return all_items_flat_list
 
