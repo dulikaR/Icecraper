@@ -10,26 +10,55 @@ from databasemanager import database
 
 class scrapeSingleSet:
 
-    def bytagid(self,urls,tag_list,driver):
-        by_tag_id_list = []
+    def bytagid(self,urls,tag_list):
+        finalResult = []
+        urlName = urls
+        soup = BeautifulSoup(requests.get(urlName).content, "lxml")
 
-        return by_tag_id_list
+        name = soup.find('div', attrs={'class': 'item-top col-12 lg-8'})
+        price = soup.find('div', attrs={'class': 'ui-price-tag'})
+        details = soup.find('div', attrs={'class': 'item-description'})
 
-    def bycommontagid(self,urls,tag_list,driver):
-        for url in urls:
-            by_common_tag_id_list = []
+        element_one = 'NULL'
+        element_three = 'NULL'
+        element_four = 'NULL'
 
-            driver.get(url)
+        element_one = name.text
+        element_three = price.text
+        element_four = details.text
 
-            result_sub_list = []
+        finalResult.append(element_one)
+        finalResult.append(element_three)
+        finalResult.append(element_four)
 
-            for tl in tag_list:
-                list_attribute = driver.find_elements_by_xpath(tl[1])
-                result_sub_list.append(tl[0], list_attribute)
+        db = database()
+        db.json(finalResult)
 
-                by_common_tag_id_list.append(result_sub_list)
 
-        return by_common_tag_id_list
+    def bycommontagid(self,url,tag_list,driver):
+
+        finalResultikman = []
+        urlName = url
+        soup = BeautifulSoup(requests.get(urlName).content)
+
+        name = soup.find('div', attrs={'class': 'item-top col-12 lg-8'})
+        price = soup.find('div', attrs={'class': 'ui-price-tag'})
+        details = soup.find('div', attrs={'class': 'item-description'})
+
+        element_one = 'NULL'
+        element_three = 'NULL'
+        element_four = 'NULL'
+
+        element_one = str(name.text)
+
+        element_three = str(price.text)
+
+        element_four = str(details.text)
+
+        finalResultikman.append(element_one, element_three, element_four)
+
+        db = database()
+        db.json(finalResultikman)
 
 
 class scrapeSequentialSets:
@@ -60,7 +89,7 @@ class scrapeSequentialSets:
 
             # print split_line_list
             db = database()
-            db.sql(split_line_list)
+            db.json(split_line_list)
             sleep(2)
 
 

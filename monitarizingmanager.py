@@ -29,6 +29,9 @@ class machinePerformance():
         l = process.io_counters()[2]
 
         thredsCount = self.decidethreads(a, l,free_memory)
+        if(thredsCount == 0):
+            thredsCount = 1
+
         return thredsCount
 
     def decidethreads(self,a,l,free_memory): #decide the amount of threads

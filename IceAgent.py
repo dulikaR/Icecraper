@@ -1,3 +1,5 @@
+from databasemanager import jsonObjects
+from distributernonjs import arraybreakerNonJS
 from paginationmanager import pagination
 from distributorjs import arraybreaker
 
@@ -7,7 +9,7 @@ class Agent:
     def start(self):
         print ""
 
-    def get_product_in_pages(self,page_list, tag_id):
+    def get_items_in_pages(self,page_list, tag_id):
         p = pagination()
         product_list = p.getItemPages(page_list, tag_id)
         return product_list
@@ -18,11 +20,17 @@ class Agent:
         page_list = p.startPaging(page_link, tag_id)
         return page_list
 
+    def start_paging_and_get_all_items(self,page_link,tag_id,item_id):
+        p = pagination()
+        all_items = p.getItemPagesTwoForALLProducts(page_link, tag_id,item_id)
+        all_items_flat_list = [item for sublist in all_items for item in sublist]
+        return all_items_flat_list
+
 
     def scrape_single_sests_with_tag_id(self,array,tagList):
-        ab = arraybreaker()
+        ab = arraybreakerNonJS()
         dataset_id = ""
-        ab.sendToThreads(array,dataset_id,tagList,1)
+        ab.sendToThreadsNonJs(array,dataset_id,tagList,1)
         print ""
 
     def scrape_single_sests_with_common_tag_id(self,array,tagList):
@@ -40,5 +48,13 @@ class Agent:
         ab = arraybreaker()
         ab.sendToThreads(array, dataset_id, tagList, 4)
         print ""
+
+    def get_json_obj(self):
+        db = jsonObjects()
+        object = db.get_json_from_file()
+        return object
+
+
+
 
 
