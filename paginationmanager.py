@@ -14,10 +14,10 @@ class pagination:
         while stop == False:
             try:
                 headerUrls.append(driver.current_url)
-                newUrl = driver.find_element_by_css_selector(xpath).click()#.get_attribute('href')
-                sleep(2)
-                # driver.get(newUrl)
-                headerUrls.append(driver.current_url)
+                sleep(3)
+                element = driver.find_element_by_css_selector(xpath)
+                driver.execute_script("arguments[0].click();", element)
+                # headerUrls.append(driver.current_url)
                 # print driver.current_url
             except:
                 stop = True

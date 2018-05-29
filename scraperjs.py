@@ -15,20 +15,26 @@ class scrapeSingleSet:
         urlName = urls
         soup = BeautifulSoup(requests.get(urlName).content, "lxml")
 
-        name = soup.find('div', attrs={'class': 'item-top col-12 lg-8'})
-        price = soup.find('div', attrs={'class': 'ui-price-tag'})
-        details = soup.find('div', attrs={'class': 'item-description'})
+        # tag_list = [['name','div','class', 'item-top col-12 lg-8'],['price','div','class', 'ui-price-tag'],['details','div','class', 'item-description']]
 
-        element_one = str(unicodedata.normalize('NFKD', (name.text)).encode('ascii', 'ignore'))
-        element_three = str(unicodedata.normalize('NFKD', (price.text)).encode('ascii', 'ignore'))
-        element_four = str(unicodedata.normalize('NFKD', (details.text)).encode('ascii', 'ignore'))
+        for tl in tag_list:
+            element = soup.find(tl[1], attrs={tl[2]: tl[3]})
+            element_text = str(unicodedata.normalize('NFKD', (element.text)).encode('ascii', 'ignore'))
+            finalResult.append([tl[0],element_text])
 
-        finalResult.append(element_one)
-        finalResult.append(element_three)
-        finalResult.append(element_four)
 
-        # db = database()
-        # db.json(finalResult)
+        # name = soup.find('div', attrs={'class': 'item-top col-12 lg-8'})
+        # price = soup.find('div', attrs={'class': 'ui-price-tag'})
+        # details = soup.find('div', attrs={'class': 'item-description'})
+        #
+        # element_one = str(unicodedata.normalize('NFKD', (name.text)).encode('ascii', 'ignore'))
+        # element_three = str(unicodedata.normalize('NFKD', (price.text)).encode('ascii', 'ignore'))
+        # element_four = str(unicodedata.normalize('NFKD', (details.text)).encode('ascii', 'ignore'))
+        #
+        # finalResult.append(element_one)
+        # finalResult.append(element_three)
+        # finalResult.append(element_four)
+
         return finalResult
 
 
