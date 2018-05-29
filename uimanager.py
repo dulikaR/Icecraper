@@ -20,7 +20,7 @@ class uimanagerclass:
 
     def startextractingproductsurlui(self,numOfproducts):
         nop = str(numOfproducts)
-        print "Pages Count : " + nop
+        print "Item Pages Count : " + nop
 
     def creatingAgentsui(self):
         # agentsBars
@@ -43,7 +43,7 @@ class uimanagerclass:
         print "Virtual Memory : " + str(l)
         print "Available Memory : " +str(free_memory)
         print "Internet I/O : " + str(l)
-        print "Number Of Agenst : " + str(thredsCount)
+        print "Number Of Agents : " + str(thredsCount)
         print "                       "
         print "                       "
 
@@ -73,12 +73,14 @@ class uimanagerclass:
         print "                       "
         print "                       "
 
-    def finishingui(self):
+    def finishingui(self,result,type):
 
-        print "'█' Scraped Files -- 97  '█'"
-        print "'█' Failuers      -- 4   '█'"
-        print "'█' Saved as      -- API '█'"
+        print "                       "
+        print "                       "
 
+        print "'█' Scraped Files -- "+str(result)+"  '█'"
+        # print "'█' Failuers      -- 4   '█'"
+        print "'█' Saved as      -- "+type+" '█'"
         print datetime.datetime.now()
 
 

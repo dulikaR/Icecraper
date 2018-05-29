@@ -1,5 +1,5 @@
 from uimanager import uimanagerclass
-from databasemanager import jsonObjects
+from databasemanager import jsonObjects, database
 from distributernonjs import arraybreakerNonJS
 from paginationmanager import pagination
 from distributorjs import arraybreaker
@@ -61,7 +61,16 @@ class Agent:
     def get_json_obj(self):
         db = jsonObjects()
         object = db.get_json_from_file()
+        ui = uimanagerclass()
+        ui.finishingui(len(object),"JSON")
         return object
+
+    def create_mysql(self,jsonFile, db_name, table_name):
+        db = database()
+        db.sql(jsonFile, db_name, table_name)
+        ui = uimanagerclass()
+        ui.finishingui(len(jsonFile), "SQL TABLE CREATED")
+
 
 
 

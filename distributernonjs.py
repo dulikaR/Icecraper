@@ -52,7 +52,7 @@ class createthreads:
             thread = threadone(target=startScrapingInThreads, args=(url, dataset_id, tagList, methodType,))
             thread.start()
             reult_set_list_one.append(thread.join())
-        print "New thread started"
+        print "New Agent started"
         db = database()
         db.json(reult_set_list_one)
         ui = uimanagerclass()

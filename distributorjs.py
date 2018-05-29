@@ -81,6 +81,7 @@ import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
+from uimanager import uimanagerclass
 from databasemanager import database
 from monitarizingmanager import machinePerformance
 from scraperjs import scrapeSingleSet, scrapeSequentialSets
@@ -129,9 +130,11 @@ class createthreads:
         thread = threadone(target=startScrapingInThreads, args=(array, dataset_id, tagList, methodType,))
         thread.start()
         reult_set_list_one.append(thread.join())
-        print "new thread started "
+        print "new Agent started "
         db = database()
         db.json(reult_set_list_one)
+        ui = uimanagerclass()
+        ui.scrapingstartedui(len(array))
 
 
 
