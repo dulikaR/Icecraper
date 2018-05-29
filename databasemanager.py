@@ -45,7 +45,7 @@ class database:
             query_columns = ', '.join(column_list)
 
             try:
-                insert_query = ''' INSERT INTO ikman (%s) VALUES (%s) ''' % (query_columns, query_placeholders)
+                insert_query = ''' INSERT INTO ''' + table_name + ''' (%s) VALUES (%s) ''' % (query_columns, query_placeholders)
                 cursor = db.cursor()
                 cursor.execute(insert_query, value_list)
                 db.commit()
