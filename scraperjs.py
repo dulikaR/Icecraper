@@ -22,19 +22,6 @@ class scrapeSingleSet:
             element_text = str(unicodedata.normalize('NFKD', (element.text)).encode('ascii', 'ignore'))
             finalResult.append([tl[0],element_text])
 
-
-        # name = soup.find('div', attrs={'class': 'item-top col-12 lg-8'})
-        # price = soup.find('div', attrs={'class': 'ui-price-tag'})
-        # details = soup.find('div', attrs={'class': 'item-description'})
-        #
-        # element_one = str(unicodedata.normalize('NFKD', (name.text)).encode('ascii', 'ignore'))
-        # element_three = str(unicodedata.normalize('NFKD', (price.text)).encode('ascii', 'ignore'))
-        # element_four = str(unicodedata.normalize('NFKD', (details.text)).encode('ascii', 'ignore'))
-        #
-        # finalResult.append(element_one)
-        # finalResult.append(element_three)
-        # finalResult.append(element_four)
-
         return finalResult
 
 
@@ -67,10 +54,10 @@ class scrapeSingleSet:
 class scrapeSequentialSets:
 
     def splitLines(self,urls, data_set_id, data_list,driver): #gather data by data sets & split the lines to find required variables
-
+        split_line_list = []
         urls = filter(None, urls)
         for url in urls:
-            split_line_list = []
+
             driver.get(str(url))
 
             DataSet = driver.find_elements_by_xpath(data_set_id) #"//div[@class='review review-index__review']"
@@ -90,10 +77,10 @@ class scrapeSequentialSets:
 
             split_line_list.append(full_data_set)
 
-            # print split_line_list
-            db = database()
-            db.json(split_line_list)
-            sleep(2)
+        return split_line_list
+            # db = database()
+            # db.json(split_line_list)
+            # sleep(2)
 
 
     def bycommontagid(self, urls, tag_list, common_tag,driver):

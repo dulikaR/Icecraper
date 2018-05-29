@@ -15,6 +15,8 @@ def startAmazon():
     a = agent.start_paging(url, "#pagnNextLink")
     b = agent.get_items_in_pages(a,".a-size-small.a-text-normal")
     agent.scrape_sequential_sests_with_split_lines(b,"//div[@class='a-section review']",tagList)
+    # xx = agent.get_json_obj()
+
     print "finish"
 
 
