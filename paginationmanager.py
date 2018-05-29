@@ -34,7 +34,6 @@ class pagination:
         for page in pageUrls:
 
             try:
-
                 driver.get(page)
                 itemList = driver.find_elements_by_css_selector(xpath)  # .get_attribute( 'href' )
 
@@ -43,10 +42,9 @@ class pagination:
                     # print itemUrl
                     itemListUrl.append(itemUrl)
             except:
-                print "error in item urls scraping"
+                print ""
             driver.quit()
 
-        i += 1
         return itemListUrl
 
 

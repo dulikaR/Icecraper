@@ -1,3 +1,4 @@
+from uimanager import uimanagerclass
 from databasemanager import jsonObjects
 from distributernonjs import arraybreakerNonJS
 from paginationmanager import pagination
@@ -12,18 +13,26 @@ class Agent:
     def get_items_in_pages(self,page_list, tag_id):
         p = pagination()
         product_list = p.getItemPages(page_list, tag_id)
+        ui = uimanagerclass()
+        ui.startextractingproductsurlui(len(product_list))
         return product_list
 
 
     def start_paging(self,page_link,tag_id):
         p = pagination()
+        ui = uimanagerclass()
+        ui.startui()
         page_list = p.startPaging(page_link, tag_id)
+        ui.startpagingui(len(page_list))
         return page_list
 
     def start_paging_and_get_all_items(self,page_link,tag_id,item_id):
         p = pagination()
+        ui = uimanagerclass()
+        ui.startui()
         all_items = p.pageingAndProducts(page_link, tag_id,item_id)
         all_items_flat_list = [item for sublist in all_items for item in sublist]
+        ui.startextractingproductsurlui(len(all_items_flat_list))
         return all_items_flat_list
 
 

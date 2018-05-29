@@ -4,6 +4,8 @@ import psutil
 from selenium import webdriver
 
 #this file will help to bypass the obstacles while mimicing through web sites
+from uimanager import uimanagerclass
+
 
 class timegap():
 
@@ -31,6 +33,9 @@ class machinePerformance():
         thredsCount = self.decidethreads(a, l,free_memory)
         if(thredsCount == 0):
             thredsCount = 1
+
+        ui = uimanagerclass()
+        ui.startmonitorizingui(a,l,free_memory,one_page_time,thredsCount)
 
         return thredsCount
 

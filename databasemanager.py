@@ -16,7 +16,7 @@ class database:
             print""
         else:
             for list_one in final_data_set:
-                print list_one
+                fgh = ""
 
         with open('data.txt', 'w') as outfile:
             json.dump(final_data_set, outfile)

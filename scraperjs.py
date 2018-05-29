@@ -16,11 +16,13 @@ class scrapeSingleSet:
         soup = BeautifulSoup(requests.get(urlName).content, "lxml")
 
         # tag_list = [['name','div','class', 'item-top col-12 lg-8'],['price','div','class', 'ui-price-tag'],['details','div','class', 'item-description']]
-
-        for tl in tag_list:
-            element = soup.find(tl[1], attrs={tl[2]: tl[3]})
-            element_text = str(unicodedata.normalize('NFKD', (element.text)).encode('ascii', 'ignore'))
-            finalResult.append([tl[0],element_text])
+        try:
+            for tl in tag_list:
+                element = soup.find(tl[1], attrs={tl[2]: tl[3]})
+                element_text = str(unicodedata.normalize('NFKD', (element.text)).encode('ascii', 'ignore'))
+                finalResult.append([tl[0],element_text])
+        except:
+            jk = "" #save url to text file
 
         return finalResult
 
@@ -34,10 +36,6 @@ class scrapeSingleSet:
         name = soup.find('div', attrs={'class': 'item-top col-12 lg-8'})
         price = soup.find('div', attrs={'class': 'ui-price-tag'})
         details = soup.find('div', attrs={'class': 'item-description'})
-
-        element_one = 'NULL'
-        element_three = 'NULL'
-        element_four = 'NULL'
 
         element_one = str(name.text)
 

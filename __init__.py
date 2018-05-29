@@ -31,13 +31,13 @@ def startIkman():
 
     b = agent.start_paging_and_get_all_items(url,".pag-next span",".item-title")
     agent.scrape_single_sests_with_tag_id(b,tag_list)
-    xx = agent.get_json_obj()
-    print xx
+    # xx = agent.get_json_obj()
+    # print xx
 
 
 if __name__ == '__main__':
-    # startIkman()
-    startAmazon()
+    startIkman()
+    # startAmazon()
 
 
 

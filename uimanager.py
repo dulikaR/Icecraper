@@ -7,18 +7,20 @@ import progressbar as progressbar
 import sys
 import psutil
 
-class ui:
+class uimanagerclass:
 
     def startui(self):
         print "######### - '█'IceScraper Started'█' - #########"
         print ""
-        print datetime.datetime.now()
+        print "Started Time : " + str(datetime.datetime.now())
 
-    def startpagingui(self):
-        print ""
+    def startpagingui(self,numOfPages):
+        nop = str(numOfPages)
+        print "Pages Count : " + nop
 
-    def startextractingproductsurlui(self):
-        print ""
+    def startextractingproductsurlui(self,numOfproducts):
+        nop = str(numOfproducts)
+        print "Pages Count : " + nop
 
     def creatingAgentsui(self):
         # agentsBars
@@ -30,22 +32,18 @@ class ui:
 
         print "                       "
         print "                       "
-        print "                       "
 
-    def startmonitorizingui(self):
-        print "######### - Gathering Machine Performances - #########"
+    def startmonitorizingui(self,a,l,free_memory,one_page_time,thredsCount):
+        print "                       "
+        print "                       "
+        print "######### - '█' Gathering Machine Performances '█' - #########"
         print "                       "
         # System Info
-        print "'█' CPU Percentage '█'"
-        print psutil.cpu_percent()
-        print "                       "
-        print "'█' Virtual Memory '█'"
-        print psutil.virtual_memory()
-        print "                       "
-        print "'█' Internet I/O   '█'"
-        print psutil.net_io_counters(pernic=False)
-
-        print "                       "
+        print "Single Page Consuming Time : " + str(one_page_time)
+        print "Virtual Memory : " + str(l)
+        print "Available Memory : " +str(free_memory)
+        print "Internet I/O : " + str(l)
+        print "Number Of Agenst : " + str(thredsCount)
         print "                       "
         print "                       "
 
@@ -64,16 +62,14 @@ class ui:
 
         print "                       "
         print "                       "
-        print "                       "
 
-    def scrapingstartedui(self):
-        print "'█'Finishing Scraping Job'█'"
+    def scrapingstartedui(self,arrayLength):
+        print "######### - '█'Finishing Scraping Job'█' - #########"
         # final finished bar
         bar = progressbar.ProgressBar()
-        for i in bar(range(100)):
-            time.sleep(0.47)
+        for i in bar(range(arrayLength)):
+            time.sleep(0.57)
 
-        print "                       "
         print "                       "
         print "                       "
 
