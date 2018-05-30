@@ -1,3 +1,4 @@
+import csv
 import datetime
 import json
 import MySQLdb
@@ -71,6 +72,19 @@ class database:
             json.dump(final_data_set, outfile)
 
         print datetime.datetime.now()
+
+    def toCsv(self,table_name,db_name):
+
+        db = MySQLdb.connect("localhost", "root", "", db_name, charset='utf8')
+        cursor = db.cursor()
+
+        cursor.execute("select * from "+table_name)
+
+        res = cursor.fetchall()
+        with open('output.csv', 'w') as fw:
+            writer = csv.writer(fw)
+            writer.writerows(res)
+
 
 
 class jsonObjects:

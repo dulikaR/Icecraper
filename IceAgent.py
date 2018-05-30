@@ -1,3 +1,4 @@
+from smartAgent import smartAgentClass
 from uimanager import uimanagerclass
 from databasemanager import jsonObjects, database
 from distributernonjs import arraybreakerNonJS
@@ -70,6 +71,16 @@ class Agent:
         db.sql(jsonFile, db_name, table_name)
         ui = uimanagerclass()
         ui.finishingui(len(jsonFile), "SQL TABLE CREATED")
+
+    def write_to_csv(self,table_name,db_name):
+        db = database()
+        db.toCsv(table_name,db_name)
+        ui = uimanagerclass()
+        ui.finishingui(len(0), "CSV FILE CREATED")
+
+    def start_smart_agent(self,tag_list):
+        sac = smartAgentClass()
+        sac.load_data(tag_list)
 
 
 

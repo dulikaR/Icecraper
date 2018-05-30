@@ -11,7 +11,6 @@ def startAmazon():
                ('review', 'span', 'class', 'a-size-base a-link-normal review-title a-color-base a-text-bold')]
 
     agent = Agent()
-
     a = agent.start_paging(url, "#pagnNextLink")
     b = agent.get_items_in_pages(a,".a-size-small.a-text-normal")
     agent.scrape_sequential_sests_with_split_lines(b,"//div[@class='a-section review']",tagList)
@@ -25,7 +24,6 @@ def startIkman():
                 ['details', 'div', 'class', 'item-description']]
 
     agent = Agent()
-
     b = agent.start_paging_and_get_all_items(url,".pag-next span",".item-title")
     agent.scrape_single_sests_with_tag_id(b,tag_list)
 
@@ -34,6 +32,7 @@ def loaddata():
     agent = Agent()
     xx = agent.get_json_obj()
     agent.create_mysql(xx, "icecrape", "ikman")
+    agent.write_to_csv("icecrape","ikman")
 
 
 if __name__ == '__main__':
