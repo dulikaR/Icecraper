@@ -2,6 +2,8 @@ import csv
 import datetime
 import json
 import MySQLdb
+from flask import Flask, jsonify, app
+
 
 # from IPy import IP
 
@@ -56,11 +58,6 @@ class database:
 
 
 
-
-
-
-
-
     def json(self,final_data_set):
         if not final_data_set:
             print""
@@ -94,3 +91,21 @@ class jsonObjects:
             data = json.load(jobj)
 
         return data
+
+
+class API():
+    app = Flask(__name__)
+    app.run(host='0.0.0.0', port='5002')
+
+    def flask_api(self,json,url_v_one):
+        # app = Flask(__name__)
+        @app.route('/<carname>', methods = ['GET'])
+        def run_flask(carname ,json):
+            print carname
+            return json
+
+
+
+
+
+

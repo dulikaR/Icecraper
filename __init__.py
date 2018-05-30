@@ -32,7 +32,8 @@ def loaddata():
     agent = Agent()
     xx = agent.get_json_obj()
     agent.create_mysql(xx, "icecrape", "ikman")
-    agent.write_to_csv("icecrape","ikman")
+    # agent.write_to_csv("icecrape","ikman")
+    # agent.create_api(xx,'search')
 
 
 if __name__ == '__main__':

@@ -1,9 +1,11 @@
 from smartAgent import smartAgentClass
 from uimanager import uimanagerclass
-from databasemanager import jsonObjects, database
+from databasemanager import jsonObjects, database, API
 from distributernonjs import arraybreakerNonJS
 from paginationmanager import pagination
 from distributorjs import arraybreaker
+from flask import Flask, jsonify
+
 
 
 class Agent:
@@ -81,6 +83,11 @@ class Agent:
     def start_smart_agent(self,tag_list):
         sac = smartAgentClass()
         sac.load_data(tag_list)
+
+    def create_api(self,json,url_one):
+        api = API()
+        api_result = api.flask_api(json, url_one)
+        return api_result
 
 
 
