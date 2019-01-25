@@ -2,7 +2,7 @@
 Scraping from a single page & creating a web scraping agent are completely two different tasks. Scraping a single page is just an attribute of web scraping agent. Web scraping agent consist of techniques such as by pass IP blocks, deal with bandwidth & Ram , css changes etc. Web scraping agent should be able to scrape multiple pages by handling java script without failures , do that job in speed of single page scrapers’ speed, keep the efficiency  & consistency. The proposed solution is a framework to scrape multiple web pages with an increased accuracy while maintaing the web elements like Javascript and CSS. The prototype presented would be gathering data sets for a given set of URLs by an user
 
 
-###example usage
+### Example Usage
 ```sh
 import datetime
 
